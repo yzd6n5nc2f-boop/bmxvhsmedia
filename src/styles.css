@@ -301,6 +301,37 @@ a:focus-visible {
   gap: 0.25rem;
 }
 
+.home-page {
+  min-height: calc(100vh - 220px);
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page .hero {
+  padding: 4rem 0 2rem;
+  flex: 1;
+}
+
+.home-page .hero-stats {
+  display: none;
+}
+
+.home-links {
+  padding: 1.5rem 0 3rem;
+}
+
+.home-link-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.home-link-grid a {
+  justify-content: center;
+  text-align: center;
+}
+
 .hero-title {
   font-size: clamp(3rem, 7vw, 6rem);
   line-height: 0.92;
