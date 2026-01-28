@@ -6,23 +6,23 @@ export default function Hero() {
     <section className="hero">
       <div className="container hero-inner">
         <div className="hero-copy">
-          {/* Alternate hero options:
-          "Retro soul. Future tools. Instant media."
-          "BMX VHS Media: bold ideas built fast."
-          */}
-          <p className="eyebrow">Big bang for a small budget</p>
-          <h1>VHS energy. AI speed. Small budget, big impact.</h1>
+          <p className="eyebrow">BIG BANG FOR A SMALL BUDGET</p>
+          <h1 className="hero-title">
+            <span>RETRO ENERGY. AI</span>
+            <span>SPEED, SMALL BUDGET,</span>
+            <span>BIG IMPACT.</span>
+          </h1>
           <p className="subheadline">
-            BMX VHS Media is a retro-future studio that turns ideas into ads,
-            reels, and brand films fast—powered by AI workflows and sharp human
-            taste.
+            BMX VHS Media is a retro-future studio that merges 80s/90s
+            creativity with AI-powered workflows to produce ads, reels, and
+            brand films fast — without big budgets.
           </p>
           <div className="hero-actions">
             <Link className="primary-button" to="/studio">
-              Create with AI
+              CREATE WITH AI
             </Link>
             <Link className="ghost-button" to="/work">
-              See work
+              SEE WORK
             </Link>
           </div>
           <div className="hero-stats">
@@ -41,20 +41,13 @@ export default function Hero() {
           </div>
         </div>
         <div className="hero-visual" aria-hidden="true">
-          <div className="cassette">
-            <div className="cassette-top">
-              <span className="cassette-label">BMX VHS</span>
-              <span className="cassette-label small">MEDIA</span>
-            </div>
-            <div className="cassette-window">
-              <div className="reel"></div>
-              <div className="reel"></div>
-            </div>
-            <div className="cassette-bottom">
-              <span>AI-first production</span>
-              <div className="streak-diagonal"></div>
-            </div>
-          </div>
+          <div
+            className="hero-visual-frame"
+            style={{
+              backgroundImage:
+                "linear-gradient(140deg, rgba(255, 78, 78, 0.2), rgba(68, 217, 255, 0.25), rgba(52, 226, 122, 0.2)), url('/images/hero-retro-workstation.jpg')",
+            }}
+          />
         </div>
       </div>
     </section>

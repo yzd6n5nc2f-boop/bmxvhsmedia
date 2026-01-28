@@ -20,7 +20,7 @@ Production-ready marketing site + lightweight app shell for BMX VHS Media.
 - Body: Inter (clean modern)
 
 **Logo usage**
-- Cassette badge mark: circular badge with tri-color streak, used in header.
+- Circular badge mark: circular badge with tri-color streak, used in header.
 - Wordmark: “BMX VHS Media” in uppercase, with optional tagline
   (“music • video • memories • AI”).
 - Keep the streak motif small and intentional; do not dominate layouts.

@@ -11,7 +11,7 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    console.error("BMX VHS Media app crashed:", error, info);
+    console.error("BMX Media app crashed:", error, info);
   }
 
   render() {

@@ -35,7 +35,7 @@ export default function WorkDetail() {
             <h3>Outcome</h3>
             <p className="detail-highlight">{project.outcome}</p>
             <p>
-              We leaned into VHS artifacts, bold typography, and AI-generated
+              We leaned into CRT glow, bold typography, and AI-generated
               environments to deliver a fast-moving narrative that felt both
               nostalgic and premium.
             </p>

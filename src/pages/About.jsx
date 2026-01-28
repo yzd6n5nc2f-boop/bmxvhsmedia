@@ -8,10 +8,10 @@ export default function About() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">About</p>
-            <h2>Built on VHS nostalgia, driven by AI.</h2>
+            <h2>Built on retro creativity, driven by AI.</h2>
             <p className="muted">
-              BMX VHS Media is a young creative studio blending 80s/90s tape
-              culture with modern, AI-first production.
+              A creative studio blending 80s/90s energy with modern, AI-first
+              production.
             </p>
           </div>
         </div>
@@ -19,13 +19,14 @@ export default function About() {
           <div className="card">
             <h3>Our story</h3>
             <p>
-              We grew up on mixtapes, BMX tapes, and late-night edit sessions.
-              Now we use AI to amplify creativity, making ambitious video and
-              sound possible on budgets that would normally say no.
+              We grew up on arcade-era design, neon-lit cityscapes, and
+              late-night edit sessions. Now we use AI to amplify creativity,
+              making ambitious video and sound possible on budgets that would
+              normally say no.
             </p>
             <p>
-              Every project is a mix of human taste, rapid iteration, and an
-              obsession with what makes a hook stick.
+              Every project is a mix of human taste, rapid iteration, CRT glow,
+              scanlines, and an obsession with what makes a hook stick.
             </p>
           </div>
           <div className="card">

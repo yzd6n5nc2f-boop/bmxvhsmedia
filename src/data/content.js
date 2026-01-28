@@ -62,11 +62,11 @@ export const portfolio = [
     summary: "Neon BMX grit meets crisp product close-ups.",
   },
   {
-    slug: "cassette-campaign",
-    title: "Cassette Campaign",
+    slug: "retro-campaign",
+    title: "Retro Campaign",
     category: "Paid Social",
     outcome: "4x ROAS",
-    summary: "Retro tape textures with AI-generated set builds.",
+    summary: "Retro textures with AI-generated set builds.",
   },
   {
     slug: "night-ride-series",
@@ -94,8 +94,35 @@ export const portfolio = [
     title: "AI Pop Music",
     category: "Music Visualiser",
     outcome: "2.1M plays",
-    summary: "Audio-reactive visuals with VHS glow overlays.",
+    summary: "Audio-reactive visuals with CRT glow overlays.",
   },
+];
+
+export const homeFeatures = [
+  {
+    title: "Instant Ad Magic",
+    body: "Fast scripts, bold visuals, and polished cutdowns built for launch windows.",
+    image: "/images/feature-ad-magic.jpg",
+  },
+  {
+    title: "Next-Gen Reels",
+    body: "Scroll-stopping edits with 80s/90s energy and modern pacing.",
+    image: "/images/feature-nextgen-reels.jpg",
+  },
+  {
+    title: "Brand Films in Lightspeed",
+    body: "Cinematic brand stories produced fast without heavy production overhead.",
+    image: "/images/feature-brand-films.jpg",
+  },
+];
+
+export const workGalleryImages = [
+  { src: "/images/work-01.jpg", alt: "Retro-future brand film still" },
+  { src: "/images/work-02.jpg", alt: "Neon product promo still" },
+  { src: "/images/work-03.jpg", alt: "City night ride sequence still" },
+  { src: "/images/work-04.jpg", alt: "Studio portrait with CRT glow" },
+  { src: "/images/work-05.jpg", alt: "Lifestyle ad with bold typography" },
+  { src: "/images/work-06.jpg", alt: "Launch reel with analog textures" },
 ];
 
 export const pricingTiers = [

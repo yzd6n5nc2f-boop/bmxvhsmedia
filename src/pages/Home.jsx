@@ -3,13 +3,37 @@ import Hero from "../components/Hero.jsx";
 import ServiceCard from "../components/ServiceCard.jsx";
 import PortfolioCard from "../components/PortfolioCard.jsx";
 import PricingCard from "../components/PricingCard.jsx";
-import { services, portfolio, pricingTiers } from "../data/content.js";
+import FeatureCard from "../components/FeatureCard.jsx";
+import { services, portfolio, pricingTiers, homeFeatures } from "../data/content.js";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <div>
       <Hero />
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">Featured</p>
+              <h2>AI-Powered Creative, Retro-Future Vibes</h2>
+            </div>
+            <Link className="ghost-button button-small" to="/work">
+              SEE WORK
+            </Link>
+          </div>
+          <div className="feature-grid">
+            {homeFeatures.map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                title={feature.title}
+                body={feature.body}
+                imageSrc={feature.image}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="section dark">
         <div className="container">
           <div className="section-heading">
