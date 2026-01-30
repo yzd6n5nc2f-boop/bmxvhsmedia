@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
@@ -13,8 +13,11 @@ import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
 
 export default function App() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
   return (
-    <div className="app-shell">
+    <div className={`app-shell${isHome ? " home-shell" : ""}`}>
       <Header />
       <main>
         <Routes>
@@ -31,6 +34,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <div className="brand-fixed">InnoWeb Ventures Limited</div>
     </div>
   );
 }

@@ -29,6 +29,19 @@ img {
   flex-direction: column;
 }
 
+.app-shell.home-shell {
+  background-color: #0b0b0f;
+  background-image: linear-gradient(
+      120deg,
+      rgba(8, 9, 14, 0.85) 10%,
+      rgba(8, 9, 14, 0.3) 80%
+    ),
+    url("/images/hero-vhs-energy.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 main {
   flex: 1;
 }
@@ -256,16 +269,7 @@ a:focus-visible {
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
-  background-color: #0b0b0f;
-  background-image: linear-gradient(
-      120deg,
-      rgba(8, 9, 14, 0.85) 10%,
-      rgba(8, 9, 14, 0.3) 80%
-    ),
-    url("/images/hero-vhs-energy.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: transparent;
 }
 
 .hero::before,
@@ -315,7 +319,7 @@ a:focus-visible {
 }
 
 .home-page {
-  min-height: calc(100vh - 220px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -638,13 +642,14 @@ textarea {
 .site-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 3rem 0;
-  background: #0b0b0f;
+  background: transparent;
 }
 
 .footer-inner {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: flex-end;
 }
 
 .footer-links {
@@ -652,11 +657,36 @@ textarea {
   gap: 0.6rem;
 }
 
+.footer-links-right {
+  text-align: right;
+}
+
 .footer-note {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   color: #d7cfbf;
+  text-align: right;
+  width: 100%;
+}
+
+.brand-fixed {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #f7f1e6;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
 }
 
 @media (max-width: 900px) {
