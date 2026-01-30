@@ -5,20 +5,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
-        <div>
-          <h3>BMX VHS Media</h3>
-          <p>
-            Retro soul, future tools. We turn tight budgets into bold media with
-            AI-first production.
-          </p>
-        </div>
-        <div className="footer-links">
-          <Link to="/services">Services</Link>
-          <Link to="/work">Work</Link>
-          <Link to="/pricing">Pricing</Link>
-          <Link to="/studio">Studio</Link>
-        </div>
-        <div className="footer-links">
+        <div className="footer-links footer-links-right">
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/login">Login</Link>
