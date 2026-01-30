@@ -40,15 +40,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="hero-visual" aria-hidden="true">
-          <div
-            className="hero-visual-frame"
-            style={{
-              backgroundImage:
-                "linear-gradient(140deg, rgba(255, 78, 78, 0.2), rgba(68, 217, 255, 0.25), rgba(52, 226, 122, 0.2)), url('/images/hero-retro-workstation.jpg')",
-            }}
-          />
-        </div>
       </div>
     </section>
   );

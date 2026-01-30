@@ -40,3 +40,11 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+## Hero image asset note
+
+After this PR merges, add the hero background image at:
+
+`public/images/hero-vhs-energy.png`
+
+Commit the binary with a normal git commit (not a patch-based PR tool) to keep binary blobs out of patch diffs.

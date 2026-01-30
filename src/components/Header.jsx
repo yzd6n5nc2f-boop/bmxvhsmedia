@@ -27,11 +27,8 @@ export default function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <Link className="ghost-button" to="/work">
-            See work
-          </Link>
           <Link className="primary-button" to="/studio">
-            Create with AI
+            CREATE WITH AI
           </Link>
         </div>
       </div>
