@@ -224,37 +224,51 @@ a:focus-visible {
 .logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 14px;
+  text-decoration: none;
 }
 
-.logo-badge {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #ff4e4e, #ffd465, #34e27a);
-  color: #0b0b0f;
-  font-weight: 700;
-  font-family: "Archivo Narrow", sans-serif;
+.brand-mark {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: transform 0.15s ease;
 }
 
-.logo-badge-img {
-  width: 40px;
-  height: 40px;
+.brand-mark-img {
+  width: 66px;
+  height: 66px;
   border-radius: 999px;
   display: block;
 }
 
-.logo-title {
-  font-weight: 700;
-  text-transform: uppercase;
+.logo:hover .brand-mark {
+  transform: translateY(-1px);
 }
 
-.logo-tag {
-  display: block;
-  font-size: 0.75rem;
-  color: #d7cfbf;
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brand-title {
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+}
+
+.brand-tagline {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.85;
 }
 
 .nav-links {
@@ -277,20 +291,6 @@ a:focus-visible {
 .header-actions {
   display: flex;
   gap: 0.75rem;
-}
-
-.header-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 12px;
-}
-
-.header-logo img {
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-  display: block;
 }
 
 .header-menu {
@@ -340,14 +340,22 @@ a:focus-visible {
 }
 
 @media (max-width: 720px) {
-  .header-logo img {
-    width: 40px;
-    height: 40px;
+  .brand-mark {
+    width: 60px;
+    height: 60px;
   }
 
-  .logo-badge-img {
-    width: 36px;
-    height: 36px;
+  .brand-mark-img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .brand-title {
+    font-size: 16px;
+  }
+
+  .brand-tagline {
+    font-size: 11px;
   }
 }
 
