@@ -7,7 +7,12 @@ export default function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link className="logo" to="/">
-          <span className="logo-badge">BMX</span>
+          <img
+            className="logo-badge-img"
+            src="/images/bmxvhs-logo.png"
+            alt=""
+            aria-hidden="true"
+          />
           <div>
             <span className="logo-title">BMX VHS Media</span>
             <span className="logo-tag">music • video • memories • AI</span>
@@ -27,6 +32,9 @@ export default function Header() {
           ))}
         </nav>
         <div className="header-actions">
+          <Link className="header-logo" to="/" aria-label="BMX VHS Media home">
+            <img src="/images/bmxvhs-logo.png" alt="BMX VHS Media" />
+          </Link>
           <Link className="primary-button" to="/studio">
             CREATE WITH AI
           </Link>
