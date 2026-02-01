@@ -6,17 +6,19 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link className="logo" to="/">
-          <img
-            className="logo-badge-img"
-            src="/images/bmxvhs-logo.png"
-            alt=""
-            aria-hidden="true"
-          />
-          <div>
-            <span className="logo-title">BMX VHS Media</span>
-            <span className="logo-tag">music • video • memories • AI</span>
-          </div>
+        <Link className="logo" to="/" aria-label="BMX VHS Media home">
+          <span className="brand-mark">
+            <img
+              className="brand-mark-img"
+              src="/images/bmxvhs-logo.png"
+              alt=""
+              aria-hidden="true"
+            />
+          </span>
+          <span className="brand-text">
+            <span className="brand-title">BMX VHS MEDIA</span>
+            <span className="brand-tagline">music • video • memories • AI</span>
+          </span>
         </Link>
         <nav className="nav-links">
           {navLinks.map((link) => (
@@ -32,9 +34,6 @@ export default function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <Link className="header-logo" to="/" aria-label="BMX VHS Media home">
-            <img src="/images/bmxvhs-logo.png" alt="BMX VHS Media" />
-          </Link>
           <Link className="primary-button" to="/studio">
             CREATE WITH AI
           </Link>
