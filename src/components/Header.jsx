@@ -30,6 +30,14 @@ export default function Header() {
           <Link className="primary-button" to="/studio">
             CREATE WITH AI
           </Link>
+          <details className="header-menu">
+            <summary>More</summary>
+            <div className="header-menu-panel">
+              <Link to="/about">About</Link>
+              <Link to="/contact">Contact</Link>
+              <Link to="/login">Login</Link>
+            </div>
+          </details>
         </div>
       </div>
     </header>
