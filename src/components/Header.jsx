@@ -7,17 +7,21 @@ export default function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link className="logo" to="/" aria-label="BMX VHS Media home">
-          <span className="brand-mark">
-            <img
-              className="brand-mark-img"
-              src="/images/bmxvhs-logo.png"
-              alt=""
-              aria-hidden="true"
-            />
-          </span>
-          <span className="brand-text">
-            <span className="brand-title">BMX VHS MEDIA</span>
-            <span className="brand-tagline">music • video • memories • AI</span>
+          <span className="brand-stack">
+            <span className="brand-mark">
+              <img
+                className="brand-mark-img"
+                src="/images/bmxvhs-logo.png"
+                alt=""
+                aria-hidden="true"
+              />
+            </span>
+            <span className="brand-sub">
+              <span className="brand-media">MEDIA</span>
+              <span className="brand-tagline">
+                music • video • memories • AI
+              </span>
+            </span>
           </span>
         </Link>
         <nav className="nav-links">
