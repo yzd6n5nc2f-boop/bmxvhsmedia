@@ -30,6 +30,8 @@ img {
 }
 
 .app-shell.home-shell {
+  height: 100vh;
+  overflow: hidden;
   background-color: #0b0b0f;
   background-image: linear-gradient(
       120deg,
@@ -37,13 +39,18 @@ img {
       rgba(8, 9, 14, 0.3) 80%
     ),
     url("/images/hero-vhs-energy.png");
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: center right;
   background-repeat: no-repeat;
 }
 
 main {
   flex: 1;
+}
+
+.app-shell.home-shell main {
+  flex: 1;
+  display: flex;
 }
 
 .container {
@@ -265,6 +272,52 @@ a:focus-visible {
   gap: 0.75rem;
 }
 
+.header-menu {
+  position: relative;
+}
+
+.header-menu summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.75rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-family: "Archivo Narrow", sans-serif;
+}
+
+.header-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.header-menu[open] summary {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.header-menu-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.6rem);
+  display: grid;
+  gap: 0.5rem;
+  min-width: 160px;
+  padding: 0.75rem;
+  border-radius: 16px;
+  background: rgba(11, 11, 15, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  z-index: 20;
+}
+
+.header-menu-panel a {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #f7f1e6;
+}
+
 .hero {
   padding: 6rem 0;
   position: relative;
@@ -319,14 +372,16 @@ a:focus-visible {
 }
 
 .home-page {
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .home-page .hero {
-  padding: 4rem 0 2rem;
+  padding: 0;
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .home-page .hero-stats {
@@ -334,7 +389,7 @@ a:focus-visible {
 }
 
 .hero-title {
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
   line-height: 0.92;
   letter-spacing: 0.02em;
   text-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
@@ -687,6 +742,13 @@ textarea {
   -webkit-backdrop-filter: blur(8px);
   pointer-events: none;
   text-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
+}
+
+.brand-fixed-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(1200px, 90vw);
 }
 
 @media (max-width: 900px) {

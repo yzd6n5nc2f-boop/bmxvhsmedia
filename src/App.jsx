@@ -33,8 +33,13 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <Footer />
-      <div className="brand-fixed">InnoWeb Ventures Limited</div>
+      {!isHome && <Footer />}
+      <div className="brand-fixed">
+        <div className="brand-fixed-inner">
+          <span>InnoWeb Ventures Limited</span>
+          <span>BMX VHS Media Limited. All rights reserved.</span>
+        </div>
+      </div>
     </div>
   );
 }
