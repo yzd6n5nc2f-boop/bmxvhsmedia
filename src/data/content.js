@@ -4,6 +4,8 @@ export const navLinks = [
   { label: "Work", href: "/work" },
   { label: "Pricing", href: "/pricing" },
   { label: "Studio", href: "/studio" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const services = [
@@ -126,7 +128,7 @@ export const workGalleryImages = [
 export const pricingTiers = [
   {
     name: "Kickflip",
-    price: "$1.2k",
+    price: "£1.2k",
     tagline: "Starter boost for scrappy teams.",
     includes: [
       "2 deliverables",
@@ -137,7 +139,7 @@ export const pricingTiers = [
   },
   {
     name: "Backflip",
-    price: "$3.8k",
+    price: "£3.8k",
     tagline: "Growth-focused launch kit.",
     includes: [
       "6 deliverables",
@@ -150,7 +152,7 @@ export const pricingTiers = [
   },
   {
     name: "Rampage",
-    price: "$7.5k",
+    price: "£7.5k",
     tagline: "Full creative sprint + motion suite.",
     includes: [
       "12 deliverables",

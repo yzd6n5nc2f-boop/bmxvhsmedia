@@ -32,10 +32,10 @@ export default function Contact() {
               <label>
                 <span>Project budget</span>
                 <select>
-                  <option>$1k-$3k</option>
-                  <option>$3k-$7k</option>
-                  <option>$7k-$15k</option>
-                  <option>$15k+</option>
+                  <option>£1k-£3k</option>
+                  <option>£3k-£7k</option>
+                  <option>£7k-£15k</option>
+                  <option>£15k+</option>
                 </select>
               </label>
               <label>
@@ -50,7 +50,7 @@ export default function Contact() {
           <div className="card contact-info">
             <h3>Studio contact</h3>
             <p>hi@bmxvhsmedia.com</p>
-            <p>Los Angeles · Remote worldwide</p>
+            <p>London, UK · Remote worldwide</p>
             <div className="social-links">
               <a href="https://example.com">Instagram</a>
               <a href="https://example.com">YouTube</a>

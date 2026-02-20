@@ -221,6 +221,10 @@ a:focus-visible {
   padding: 1.2rem 0;
 }
 
+.header-inner-clean {
+  gap: 1rem;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -294,6 +298,17 @@ a:focus-visible {
 
 .nav-link.active {
   color: #ffd465;
+}
+
+.header-location {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #d7cfbf;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  white-space: nowrap;
 }
 
 .header-actions {
@@ -431,6 +446,10 @@ a:focus-visible {
   gap: 1rem;
 }
 
+.hero-copy-clean {
+  max-width: 920px;
+}
+
 .home-page {
   flex: 1;
   display: flex;
@@ -530,6 +549,11 @@ a:focus-visible {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1.5rem;
+}
+
+.hero-actions-single .primary-button {
+  min-width: 290px;
+  text-align: center;
 }
 
 .hero-stats {
@@ -1139,7 +1163,10 @@ textarea {
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
-  padding: 0.35rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.35);
   color: #f7f1e6;
@@ -1152,19 +1179,43 @@ textarea {
   text-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
 }
 
-.brand-fixed-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  width: min(1200px, 90vw);
+.brand-fixed-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.brand-fixed-name {
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.brand-fixed-sep {
+  opacity: 0.55;
+}
+
+.brand-fixed-location {
+  opacity: 0.85;
+  letter-spacing: 0.06em;
 }
 
 @media (max-width: 900px) {
-  .nav-links {
-    display: none;
-  }
   .header-inner {
     flex-wrap: wrap;
+  }
+  .header-inner-clean {
+    gap: 0.7rem;
+  }
+  .nav-links {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+    scrollbar-width: thin;
+  }
+  .nav-link {
+    white-space: nowrap;
   }
   .section-heading {
     flex-direction: column;
@@ -1189,14 +1240,6 @@ textarea {
   .hero {
     padding: 4rem 0;
   }
-  .header-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-  .header-actions a {
-    width: 100%;
-    text-align: center;
-  }
   .home-page .hero {
     padding: 3rem 0 1.5rem;
   }
@@ -1216,6 +1259,13 @@ textarea {
   .hero-actions a {
     width: 100%;
     text-align: center;
+  }
+  .hero-actions-single .primary-button {
+    min-width: 0;
+  }
+  .header-location {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.65rem;
   }
   .workbench-form-grid {
     grid-template-columns: 1fr;

@@ -12,8 +12,8 @@ export default function Pricing() {
             <p className="eyebrow">Pricing</p>
             <h2>Pick your sprint size.</h2>
             <p className="muted">
-              Transparent tiers built for small teams, big ideas, and fast
-              launches.
+              Transparent tiers in GBP, scoped for teams launching from our
+              London, UK hub.
             </p>
           </div>
           <Link className="ghost-button" to="/contact">

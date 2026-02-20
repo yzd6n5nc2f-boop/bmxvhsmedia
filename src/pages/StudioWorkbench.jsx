@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const objectiveOptions = ["Awareness", "Leads", "Sales", "App installs"];
 const durationOptions = ["15s", "30s", "45s", "60s"];
-const budgetOptions = ["Test (< $1k)", "Growth ($1k-$5k)", "Scale ($5k+)"];
+const budgetOptions = ["Test (< £1k)", "Growth (£1k-£5k)", "Scale (£5k+)"];
 const channelOptions = [
   "TikTok",
   "Instagram Reels",
@@ -140,14 +140,14 @@ const checkoutPlans = [
   {
     id: "creator",
     name: "Creator",
-    price: "$49/mo",
+    price: "£49/mo",
     summary: "Solo workflows and limited credits.",
     features: ["3 active campaigns", "30 AI generations / month", "Single workspace"],
   },
   {
     id: "studio",
     name: "Studio",
-    price: "$149/mo",
+    price: "£149/mo",
     summary: "Full advert pipeline for teams.",
     features: [
       "Unlimited campaigns",
@@ -177,7 +177,7 @@ const initialBrief = {
   audience: "Indie brands and creators",
   goal: "Sales",
   duration: "30s",
-  budget: "Growth ($1k-$5k)",
+  budget: "Growth (£1k-£5k)",
   channels: ["TikTok", "Instagram Reels"],
   tones: ["Bold", "Retro"],
 };
@@ -312,12 +312,12 @@ export default function StudioWorkbench() {
             <p className="eyebrow">Studio Platform</p>
             <h2>Agentic advert builder workspace.</h2>
             <p className="muted">
-              Configure a brief, choose providers, and generate an end-to-end advert production plan from one place.
+              Configure a brief, choose providers, and generate an end-to-end advert production plan from London, UK.
             </p>
           </div>
           <div className="studio-entry-actions">
-            <Link className="ghost-button" to="/studio">
-              Back to demo page
+            <Link className="ghost-button" to="/">
+              Back to home
             </Link>
             <button className="primary-button" type="button" onClick={handleGenerate}>
               Generate advert plan
@@ -499,7 +499,7 @@ export default function StudioWorkbench() {
               <span className="chip">Demo checkout</span>
             </div>
             <p className="muted">
-              The page below is the monetization step after the demo workflow. Pick a plan and connect Stripe checkout.
+              The page below is the monetization step after the demo workflow. Pick a GBP plan and connect Stripe checkout.
             </p>
             <div className="plan-grid">
               {checkoutPlans.map((planItem) => {

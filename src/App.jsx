@@ -7,7 +7,6 @@ import Services from "./pages/Services.jsx";
 import Work from "./pages/Work.jsx";
 import WorkDetail from "./pages/WorkDetail.jsx";
 import Pricing from "./pages/Pricing.jsx";
-import Studio from "./pages/Studio.jsx";
 import StudioWorkbench from "./pages/StudioWorkbench.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -27,7 +26,7 @@ export default function App() {
           <Route path="/work" element={<Work />} />
           <Route path="/work/:slug" element={<WorkDetail />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/studio" element={<Studio />} />
+          <Route path="/studio" element={<StudioWorkbench />} />
           <Route path="/studio/workbench" element={<StudioWorkbench />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -37,10 +36,15 @@ export default function App() {
       </main>
       {!isHome && <Footer />}
       <div className="brand-fixed">
-        <div className="brand-fixed-inner">
-          <span>InnoWeb Ventures Limited</span>
-          <span>BMX VHS Media Limited. All rights reserved.</span>
-        </div>
+        <img
+          className="brand-fixed-logo"
+          src="/images/bmxvhs-logo.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <span className="brand-fixed-name">BMX VHS</span>
+        <span className="brand-fixed-sep">|</span>
+        <span className="brand-fixed-location">London, UK</span>
       </div>
     </div>
   );
