@@ -36,15 +36,8 @@ export default function App() {
       </main>
       {!isHome && <Footer />}
       <div className="brand-fixed">
-        <img
-          className="brand-fixed-logo"
-          src="/images/bmxvhs-logo.png"
-          alt=""
-          aria-hidden="true"
-        />
-        <span className="brand-fixed-name">BMX VHS</span>
-        <span className="brand-fixed-sep">|</span>
-        <span className="brand-fixed-location">London, UK</span>
+        <span className="brand-fixed-left">BMX Media ©</span>
+        <span className="brand-fixed-right">InnoWeb Ventures LTD</span>
       </div>
     </div>
   );

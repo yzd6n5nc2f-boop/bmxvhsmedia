@@ -1165,39 +1165,29 @@ textarea {
   z-index: 50;
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.35rem 0.75rem;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(1200px, 92vw);
+  padding: 0.38rem 0.95rem;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.35);
   color: #f7f1e6;
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: none;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   pointer-events: none;
   text-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
 }
 
-.brand-fixed-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+.brand-fixed-left {
+  font-weight: 600;
 }
 
-.brand-fixed-name {
-  letter-spacing: 0.14em;
-  font-weight: 700;
-}
-
-.brand-fixed-sep {
-  opacity: 0.55;
-}
-
-.brand-fixed-location {
+.brand-fixed-right {
   opacity: 0.85;
-  letter-spacing: 0.06em;
+  font-size: 0.72rem;
 }
 
 @media (max-width: 900px) {
@@ -1266,6 +1256,14 @@ textarea {
   .header-location {
     font-size: 0.65rem;
     padding: 0.4rem 0.65rem;
+  }
+  .brand-fixed {
+    gap: 0.55rem;
+    padding: 0.32rem 0.6rem;
+    font-size: 0.66rem;
+  }
+  .brand-fixed-right {
+    font-size: 0.62rem;
   }
   .workbench-form-grid {
     grid-template-columns: 1fr;
