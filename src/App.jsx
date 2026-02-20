@@ -8,6 +8,7 @@ import Work from "./pages/Work.jsx";
 import WorkDetail from "./pages/WorkDetail.jsx";
 import Pricing from "./pages/Pricing.jsx";
 import Studio from "./pages/Studio.jsx";
+import StudioWorkbench from "./pages/StudioWorkbench.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/work/:slug" element={<WorkDetail />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/studio" element={<Studio />} />
+          <Route path="/studio/workbench" element={<StudioWorkbench />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
