@@ -19,7 +19,6 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-        <span className="header-location">London, UK</span>
       </div>
     </header>
   );

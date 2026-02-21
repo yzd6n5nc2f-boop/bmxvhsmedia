@@ -7,9 +7,12 @@ export default function Hero() {
       <div className="container hero-inner">
         <div className="hero-copy hero-copy-clean">
           <div className="hero-brand-shell">
-            <div className="hero-logo-mark" aria-hidden="true">
-              <span>BMX</span>
-              <small>VHS</small>
+            <div className="hero-logo-mark">
+              <img
+                className="hero-logo-img"
+                src="/images/bmxvhs-logo.png"
+                alt="BMX VHS logo"
+              />
             </div>
             <div>
               <p className="eyebrow">Analog Creativity. AI Advertising.</p>

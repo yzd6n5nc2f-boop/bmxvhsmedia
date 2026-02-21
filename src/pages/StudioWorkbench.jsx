@@ -12,127 +12,44 @@ const channelOptions = [
   "Landing Page",
 ];
 const toneOptions = ["Bold", "Retro", "Cinematic", "Clean", "Playful"];
+const sceneCountOptions = ["4", "6", "8", "10"];
 
-const providerTracks = [
+const openAiModelOptions = {
+  script: ["gpt-5", "gpt-4.1"],
+  images: ["gpt-image-1", "gpt-image-1-high"],
+  sora: ["sora-prototype", "sora-production"],
+};
+
+const workflowSteps = [
   {
-    id: "video",
-    label: "Video generation",
-    providers: [
-      {
-        id: "openai-sora",
-        name: "OpenAI Sora",
-        integration: "native",
-        description: "Primary text-to-video engine for hero sequences.",
-      },
-      {
-        id: "runway",
-        name: "Runway",
-        integration: "apikey",
-        description: "Alternate video model for style variants.",
-      },
-      {
-        id: "pika",
-        name: "Pika",
-        integration: "apikey",
-        description: "Fast short-form iteration and cutdown support.",
-      },
-    ],
+    id: "brief",
+    title: "Campaign Brief",
+    tool: "OpenAI Responses",
+    description: "Lock objective, audience, channels, and conversion goal.",
   },
   {
-    id: "images",
-    label: "Images and boards",
-    providers: [
-      {
-        id: "openai-images",
-        name: "OpenAI Images",
-        integration: "native",
-        description: "Concept stills, frame boards, and thumbnails.",
-      },
-      {
-        id: "ideogram",
-        name: "Ideogram",
-        integration: "apikey",
-        description: "Typography-rich poster and static ad comps.",
-      },
-      {
-        id: "midjourney",
-        name: "Midjourney",
-        integration: "limited",
-        description: "Optional visual style input when API access is available.",
-      },
-    ],
+    id: "storyboard",
+    title: "Storyboard Draft",
+    tool: "OpenAI Responses",
+    description: "Build scene-by-scene narrative and camera intent.",
   },
   {
-    id: "audio",
-    label: "Music and sound",
-    providers: [
-      {
-        id: "suno",
-        name: "Suno",
-        integration: "limited",
-        description: "Music bed generation if API access is enabled.",
-      },
-      {
-        id: "udio",
-        name: "Udio",
-        integration: "limited",
-        description: "Alternative music generation slot.",
-      },
-      {
-        id: "openai-audio",
-        name: "OpenAI Audio",
-        integration: "native",
-        description: "Fallback stems, transitions, and prompt-driven FX.",
-      },
-    ],
+    id: "frames",
+    title: "Scene Images",
+    tool: "OpenAI Images",
+    description: "Generate visual frames from storyboard and references.",
   },
   {
-    id: "voice",
-    label: "Voice and avatar",
-    providers: [
-      {
-        id: "openai-tts",
-        name: "OpenAI TTS",
-        integration: "native",
-        description: "Voiceover draft generation and multilingual reads.",
-      },
-      {
-        id: "elevenlabs",
-        name: "ElevenLabs",
-        integration: "apikey",
-        description: "Voice cloning and advanced timbre control.",
-      },
-      {
-        id: "heygen",
-        name: "HeyGen",
-        integration: "apikey",
-        description: "Avatar presenter option for UGC style ads.",
-      },
-    ],
+    id: "prototype",
+    title: "Sora Prototype",
+    tool: "OpenAI Sora",
+    description: "Create a fast prototype cut to review pacing and look.",
   },
   {
-    id: "agent",
-    label: "Agent orchestration",
-    providers: [
-      {
-        id: "openai-responses",
-        name: "OpenAI Responses + Agents",
-        integration: "native",
-        description: "Core planner and tool-calling orchestration layer.",
-      },
-      {
-        id: "langgraph",
-        name: "LangGraph",
-        integration: "apikey",
-        description: "Custom multi-step agent graph when needed.",
-      },
-      {
-        id: "zapier",
-        name: "Zapier",
-        integration: "apikey",
-        description: "Route outputs to CRM, sheets, and notifications.",
-      },
-    ],
+    id: "final",
+    title: "Final Production",
+    tool: "OpenAI + Human Review",
+    description: "Promote approved prototype into final advert outputs.",
   },
 ];
 
@@ -149,11 +66,7 @@ const checkoutPlans = [
     name: "Studio",
     price: "£149/mo",
     summary: "Full advert pipeline for teams.",
-    features: [
-      "Unlimited campaigns",
-      "Provider API routing",
-      "Priority generation queue",
-    ],
+    features: ["Unlimited campaigns", "Sora prototype workflow", "Priority generation queue"],
   },
   {
     id: "agency",
@@ -164,16 +77,10 @@ const checkoutPlans = [
   },
 ];
 
-const integrationLabels = {
-  native: "Native",
-  apikey: "Bring API key",
-  limited: "Check API access",
-};
-
 const initialBrief = {
   campaignName: "Spring Launch Promo",
   brand: "BMX VHS Media",
-  offer: "AI-powered advert workflow",
+  offer: "Analog + AI advert workflow",
   audience: "Indie brands and creators",
   goal: "Sales",
   duration: "30s",
@@ -182,10 +89,18 @@ const initialBrief = {
   tones: ["Bold", "Retro"],
 };
 
-const initialProviders = providerTracks.reduce((accumulator, track) => {
-  accumulator[track.id] = track.providers[0].id;
-  return accumulator;
-}, {});
+const initialStoryboard = {
+  arc: "Open with product tension, reveal transformation, end on clear CTA.",
+  sceneCount: "6",
+  visualStyle: "Cinematic analog texture with modern typography overlays.",
+  referenceImage: "",
+};
+
+const initialModels = {
+  script: "gpt-5",
+  images: "gpt-image-1",
+  sora: "sora-prototype",
+};
 
 function toggleChoice(list, item) {
   if (list.includes(item)) {
@@ -199,13 +114,7 @@ function toggleChoice(list, item) {
   return [...list, item];
 }
 
-function pickProviderName(trackId, providerId) {
-  const track = providerTracks.find((entry) => entry.id === trackId);
-  const selected = track?.providers.find((provider) => provider.id === providerId);
-  return selected ? selected.name : "Provider pending";
-}
-
-function buildAdvertPlan(brief, providers) {
+function buildProductionPlan(brief, storyboard, models) {
   const campaignName = brief.campaignName || "Untitled campaign";
   const brand = brief.brand || "Your brand";
   const offer = brief.offer || "your offer";
@@ -214,31 +123,28 @@ function buildAdvertPlan(brief, providers) {
   const duration = brief.duration || "30s";
   const channel = brief.channels[0] || "Instagram Reels";
   const tones = brief.tones.join(", ").toLowerCase();
+  const sceneCount = Math.max(Number(storyboard.sceneCount) || 4, 1);
+  const referenceLabel = storyboard.referenceImage || "No reference image uploaded";
 
-  const videoProvider = pickProviderName("video", providers.video);
-  const imageProvider = pickProviderName("images", providers.images);
-  const audioProvider = pickProviderName("audio", providers.audio);
-  const voiceProvider = pickProviderName("voice", providers.voice);
-  const agentProvider = pickProviderName("agent", providers.agent);
+  const sceneFrames = Array.from({ length: sceneCount }, (_, index) => {
+    const sceneNumber = index + 1;
+    return `Scene ${sceneNumber}: ${brand} ${sceneNumber === 1 ? "intro" : "beat"} in ${tones} style.`;
+  });
 
   return {
-    scriptHook: `${brand} introduces ${offer}. In ${duration}, lead with ${tones} energy and push ${goal.toLowerCase()} for ${audience}.`,
-    cta: `CTA: Start your campaign on ${channel} and drive traffic to the booking page.`,
-    steps: [
-      `Agent planner (${agentProvider}) builds shot list + prompt packs.`,
-      `Generate hero video sequence with ${videoProvider}.`,
-      `Create storyboard stills and thumbnails in ${imageProvider}.`,
-      `Generate voice draft in ${voiceProvider} and music bed in ${audioProvider}.`,
-      "Assemble final cuts: 9:16, 1:1, 16:9 exports + caption variants.",
-    ],
+    hook: `${brand} introduces ${offer}. Build a ${duration} advert focused on ${goal.toLowerCase()} for ${audience}.`,
+    storyboardPrompt: `${storyboard.arc} Use ${storyboard.visualStyle} with ${sceneCount} scenes and a clear final CTA on ${channel}.`,
+    sceneFrames,
+    prototypePlan: `Generate low-latency Sora prototype (${models.sora}) from storyboard frames, then mark edit notes before final render.`,
+    finalPlan: `After prototype approval, run final pass with ${models.script} + ${models.images} for production-ready deliverables.`,
+    referenceLabel,
     deliverables: [
-      `${campaignName} master timeline`,
-      `${duration} hero cut + 15s cutdown`,
-      "5 hooks + 3 CTA variants",
-      "Caption pack + upload checklist",
-      "Brand-safe music and voice stems",
+      `${campaignName} storyboard pack`,
+      `Frame set (${sceneCount} scenes)`,
+      `${duration} Sora prototype`,
+      "Final advert exports: 9:16 | 1:1 | 16:9",
+      "CTA and caption variants",
     ],
-    providers: [videoProvider, imageProvider, audioProvider, voiceProvider, agentProvider],
   };
 }
 
@@ -255,22 +161,44 @@ function formatGeneratedAt(date) {
   });
 }
 
+function getStepStatus(generatedAt, stepIndex) {
+  if (!generatedAt) {
+    if (stepIndex === 0) {
+      return { tone: "ready", label: "Ready" };
+    }
+
+    return { tone: "queued", label: "Queued" };
+  }
+
+  return { tone: "done", label: "Done" };
+}
+
 export default function StudioWorkbench() {
   const [brief, setBrief] = useState(initialBrief);
-  const [providers, setProviders] = useState(initialProviders);
+  const [storyboard, setStoryboard] = useState(initialStoryboard);
+  const [models, setModels] = useState(initialModels);
   const [selectedPlan, setSelectedPlan] = useState("studio");
   const [generatedAt, setGeneratedAt] = useState(null);
   const [checkoutNote, setCheckoutNote] = useState("");
 
-  const plan = useMemo(() => buildAdvertPlan(brief, providers), [brief, providers]);
+  const plan = useMemo(
+    () => buildProductionPlan(brief, storyboard, models),
+    [brief, storyboard, models],
+  );
 
   const handleBriefChange = (event) => {
     const { name, value } = event.target;
     setBrief((current) => ({ ...current, [name]: value }));
   };
 
-  const handleProviderSelect = (trackId, providerId) => {
-    setProviders((current) => ({ ...current, [trackId]: providerId }));
+  const handleStoryboardChange = (event) => {
+    const { name, value } = event.target;
+    setStoryboard((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleModelChange = (event) => {
+    const { name, value } = event.target;
+    setModels((current) => ({ ...current, [name]: value }));
   };
 
   const handleChannelToggle = (channel) => {
@@ -287,6 +215,14 @@ export default function StudioWorkbench() {
     }));
   };
 
+  const handleReferenceUpload = (event) => {
+    const [file] = event.target.files || [];
+    setStoryboard((current) => ({
+      ...current,
+      referenceImage: file ? file.name : "",
+    }));
+  };
+
   const handleGenerate = () => {
     setGeneratedAt(new Date());
   };
@@ -300,7 +236,7 @@ export default function StudioWorkbench() {
     }
 
     setCheckoutNote(
-      `Plan selected: ${planSelection.name}. Replace this button with your Stripe checkout session endpoint.`,
+      `Plan selected: ${planSelection.name}. Replace this with your Stripe checkout session endpoint.`,
     );
   };
 
@@ -312,7 +248,8 @@ export default function StudioWorkbench() {
             <p className="eyebrow">Studio Platform</p>
             <h2>Agentic advert builder workspace.</h2>
             <p className="muted">
-              Configure a brief, choose providers, and generate an end-to-end advert production plan from London, UK.
+              OpenAI-only workflow: campaign brief to storyboard, storyboard to images, images to Sora prototype, then
+              final production.
             </p>
           </div>
           <div className="studio-entry-actions">
@@ -320,9 +257,17 @@ export default function StudioWorkbench() {
               Back to home
             </Link>
             <button className="primary-button" type="button" onClick={handleGenerate}>
-              Generate advert plan
+              Generate workflow
             </button>
           </div>
+        </div>
+
+        <div className="workbench-toolbar card">
+          <span className="badge">OpenAI Stack Only</span>
+          <span className="chip">
+            {"Storyboard -> Images -> Sora Prototype -> Final Production"}
+          </span>
+          <span className="chip">Generated {formatGeneratedAt(generatedAt)}</span>
         </div>
 
         <div className="workbench-grid">
@@ -425,61 +370,143 @@ export default function StudioWorkbench() {
 
           <article className="card workbench-card">
             <div className="workbench-header">
-              <h3>2. Provider picker</h3>
-              <span className="chip">OpenAI-first + optional APIs</span>
+              <h3>2. Storyboard + model setup</h3>
+              <span className="chip">OpenAI configuration</span>
             </div>
-            <div className="provider-stack">
-              {providerTracks.map((track) => (
-                <div className="provider-track" key={track.id}>
-                  <p className="provider-track-title">{track.label}</p>
-                  <div className="provider-grid">
-                    {track.providers.map((provider) => {
-                      const selected = providers[track.id] === provider.id;
-                      return (
-                        <button
-                          className={selected ? "provider-option active" : "provider-option"}
-                          key={provider.id}
-                          onClick={() => handleProviderSelect(track.id, provider.id)}
-                          type="button"
-                        >
-                          <span className="provider-name">{provider.name}</span>
-                          <span className={`provider-status ${provider.integration}`}>
-                            {integrationLabels[provider.integration]}
-                          </span>
-                          <span className="provider-copy">{provider.description}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
+
+            <div className="storyboard-grid">
+              <label>
+                <span>Story arc</span>
+                <textarea
+                  name="arc"
+                  onChange={handleStoryboardChange}
+                  rows="4"
+                  value={storyboard.arc}
+                />
+              </label>
+              <label>
+                <span>Visual style</span>
+                <textarea
+                  name="visualStyle"
+                  onChange={handleStoryboardChange}
+                  rows="4"
+                  value={storyboard.visualStyle}
+                />
+              </label>
+              <label>
+                <span>Scene count</span>
+                <select name="sceneCount" onChange={handleStoryboardChange} value={storyboard.sceneCount}>
+                  {sceneCountOptions.map((count) => (
+                    <option key={count} value={count}>
+                      {count}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>Reference image upload</span>
+                <input accept="image/*" onChange={handleReferenceUpload} type="file" />
+              </label>
+            </div>
+
+            <div className="reference-meta">
+              <span className="chip">
+                Reference: {storyboard.referenceImage || "No file selected"}
+              </span>
+            </div>
+
+            <div className="model-grid">
+              <label>
+                <span>Script planner model</span>
+                <select name="script" onChange={handleModelChange} value={models.script}>
+                  {openAiModelOptions.script.map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>Image generation model</span>
+                <select name="images" onChange={handleModelChange} value={models.images}>
+                  {openAiModelOptions.images.map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>Sora mode</span>
+                <select name="sora" onChange={handleModelChange} value={models.sora}>
+                  {openAiModelOptions.sora.map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
+                </select>
+              </label>
             </div>
           </article>
 
           <article className="card workbench-card workbench-output">
             <div className="workbench-header">
-              <h3>3. Agent output</h3>
-              <span className="chip">Generated {formatGeneratedAt(generatedAt)}</span>
+              <h3>3. Workflow lane</h3>
+              <span className="chip">Prototype-first pipeline</span>
             </div>
-            <p className="muted">
-              This output is generated from the brief and selected providers. Connect real APIs to execute each step.
+
+            <div className="workflow-lane" role="list" aria-label="Advert workflow pipeline">
+              {workflowSteps.map((step, index) => {
+                const status = getStepStatus(generatedAt, index);
+
+                return (
+                  <React.Fragment key={step.id}>
+                    <article className="workflow-step" role="listitem">
+                      <span className="workflow-step-index">0{index + 1}</span>
+                      <h4>{step.title}</h4>
+                      <p className="muted">{step.description}</p>
+                      <span className="workflow-step-tool">{step.tool}</span>
+                      <span className={`workflow-step-status ${status.tone}`}>{status.label}</span>
+                    </article>
+                    {index < workflowSteps.length - 1 ? (
+                      <span className="workflow-arrow" aria-hidden="true">
+                        {"->"}
+                      </span>
+                    ) : null}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+
+            <p className="muted workflow-caption">
+              {"Flow: brief -> storyboard -> scene images -> Sora prototype -> final advert handoff."}
             </p>
+
             <div className="output-block">
               <p className="output-label">Script hook</p>
-              <p>{plan.scriptHook}</p>
-              <p className="output-label">Call to action</p>
-              <p>{plan.cta}</p>
+              <p>{plan.hook}</p>
+              <p className="output-label">Storyboard prompt</p>
+              <p>{plan.storyboardPrompt}</p>
             </div>
+
             <div className="output-block">
-              <p className="output-label">Production sequence</p>
-              <ul className="output-list">
-                {plan.steps.map((step) => (
-                  <li key={step}>{step}</li>
+              <p className="output-label">Storyboard scene frames</p>
+              <ul className="scene-list">
+                {plan.sceneFrames.map((scene) => (
+                  <li key={scene}>{scene}</li>
                 ))}
               </ul>
             </div>
+
             <div className="output-block">
-              <p className="output-label">Export pack</p>
+              <p className="output-label">Prototype and final pass</p>
+              <p>{plan.prototypePlan}</p>
+              <p>{plan.finalPlan}</p>
+              <p className="muted">Reference image state: {plan.referenceLabel}</p>
+            </div>
+
+            <div className="output-block">
+              <p className="output-label">Deliverables</p>
               <div className="chip-grid">
                 {plan.deliverables.map((item) => (
                   <span className="chip" key={item}>
@@ -488,18 +515,15 @@ export default function StudioWorkbench() {
                 ))}
               </div>
             </div>
-            <p className="muted">
-              Active providers: {plan.providers.join(" | ")}
-            </p>
           </article>
 
           <article className="card workbench-card checkout-card">
             <div className="workbench-header">
-              <h3>4. Payment gate</h3>
+              <h3>4. Billing</h3>
               <span className="chip">Demo checkout</span>
             </div>
             <p className="muted">
-              The page below is the monetization step after the demo workflow. Pick a GBP plan and connect Stripe checkout.
+              Select your workspace plan, then connect Stripe checkout for live billing.
             </p>
             <div className="plan-grid">
               {checkoutPlans.map((planItem) => {

@@ -476,39 +476,35 @@ a:focus-visible {
   border-radius: 20px;
   background: linear-gradient(
     120deg,
-    rgba(11, 11, 15, 0.85),
-    rgba(11, 11, 15, 0.6),
-    rgba(11, 11, 15, 0.85)
+    rgba(11, 11, 15, 0.35),
+    rgba(11, 11, 15, 0.2),
+    rgba(11, 11, 15, 0.35)
   );
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .hero-logo-mark {
   width: clamp(82px, 10vw, 116px);
   aspect-ratio: 1;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  line-height: 0.95;
-  text-transform: uppercase;
-  font-family: "Archivo Narrow", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #0b0b0f;
-  background: radial-gradient(circle at 30% 20%, #fff0bf 8%, #ffd465 38%, #ff4e4e 68%, #34e27a 100%);
-  border: 2px solid rgba(247, 241, 230, 0.7);
-  box-shadow: 0 0 0 5px rgba(68, 217, 255, 0.13), 0 18px 45px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 10, 14, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 4px rgba(68, 217, 255, 0.12), 0 18px 45px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.hero-logo-mark span {
-  font-size: 1.15rem;
-}
-
-.hero-logo-mark small {
-  font-size: 0.9rem;
+.hero-logo-img {
+  width: 88%;
+  height: 88%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .hero-title {
@@ -889,6 +885,14 @@ textarea {
   margin-top: 2rem;
 }
 
+.workbench-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
 .workbench-grid {
   display: grid;
   gap: 1.5rem;
@@ -917,9 +921,20 @@ textarea {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.storyboard-grid,
+.model-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .stack {
   display: grid;
   gap: 0.5rem;
+}
+
+.reference-meta {
+  margin-top: 0.35rem;
 }
 
 .toggle-chip-grid {
@@ -1013,6 +1028,88 @@ textarea {
   font-size: 0.75rem;
   color: #d7cfbf;
   line-height: 1.4;
+}
+
+.workflow-lane {
+  display: flex;
+  align-items: stretch;
+  gap: 0.55rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+}
+
+.workflow-step {
+  min-width: 220px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.85rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.workflow-step h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.workflow-step-index {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffd465;
+}
+
+.workflow-step-tool {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #44d9ff;
+}
+
+.workflow-step-status {
+  justify-self: start;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.workflow-step-status.ready {
+  color: #ffd465;
+  border-color: rgba(255, 212, 101, 0.45);
+}
+
+.workflow-step-status.queued {
+  color: #d7cfbf;
+  border-color: rgba(215, 207, 191, 0.45);
+}
+
+.workflow-step-status.done {
+  color: #34e27a;
+  border-color: rgba(52, 226, 122, 0.45);
+}
+
+.workflow-arrow {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  color: #44d9ff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.workflow-caption {
+  margin: 0.35rem 0 0;
+}
+
+.scene-list {
+  margin: 0.2rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
 }
 
 .output-block {
@@ -1224,6 +1321,21 @@ textarea {
   .workbench-output {
     grid-column: auto;
   }
+  .storyboard-grid,
+  .model-grid {
+    grid-template-columns: 1fr;
+  }
+  .workflow-lane {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+  .workflow-step {
+    min-width: 0;
+  }
+  .workflow-arrow {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1252,10 +1364,6 @@ textarea {
   }
   .hero-actions-single .primary-button {
     min-width: 0;
-  }
-  .header-location {
-    font-size: 0.65rem;
-    padding: 0.4rem 0.65rem;
   }
   .brand-fixed {
     gap: 0.55rem;
